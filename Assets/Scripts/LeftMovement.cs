@@ -4,25 +4,40 @@ using UnityEngine;
 
 public class LeftMovement : MonoBehaviour
 {
-    [SerializeField] private float speedX;
-    [SerializeField] private float distance=10.36f;
+    public float speed;
     BoxCollider2D box;
     float groundWidht;
-    // Start is called before the first frame update
+    float obstacleWidth;
     void Start()
     {
-        box= GetComponent<BoxCollider2D>();
-        groundWidht = box.size.x;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        transform.position = new Vector2(transform.position.x - speedX * Time.deltaTime, transform.position.y);
-        if (transform.position.x <= -groundWidht)
+        if (gameObject.CompareTag("Ground"))
         {
-            transform.position = new Vector2(transform.position.x+2*groundWidht, transform.position.y);
+            box = GetComponent<BoxCollider2D>();
+            groundWidht = box.size.x;
+        }
+        else if (gameObject.CompareTag("Obstacle"))
+        {
+            obstacleWidth = GameObject.FindGameObjectWithTag("Column").GetComponent<BoxCollider2D>().size.x;
         }
     }
 
+    void Update()
+    {
+        transform.position = new Vector2(transform.position.x - speed * Time.deltaTime, transform.position.y);
+
+        if (gameObject.CompareTag("Ground"))
+        {
+            if (transform.position.x <= -groundWidht)
+            {
+                transform.position = new Vector2(transform.position.x + 2 * groundWidht, transform.position.y);
+            }
+        }
+        else if (gameObject.CompareTag("Obstacle"))
+        {
+            if (transform.position.x < GameManager.bottomLeft.x - obstacleWidth)
+            {
+                Destroy(gameObject);
+            }
+        }   
+    }
 }

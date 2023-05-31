@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Obstacle
+  - Column
   layers:
   - Default
   - TransparentFX
@@ -41,12 +44,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
-    uniqueID: 2214893115
+  - name: SortingLayer_1
+    uniqueID: 3498456417
     locked: 0
-  - name: Ground
-    uniqueID: 4280709171
+  - name: SortingLayer_2
+    uniqueID: 2593547975
     locked: 0
-  - name: Fish
-    uniqueID: 2305636817
+  - name: SortingLayer_3
+    uniqueID: 1761947161
+    locked: 0
+  - name: Canvas
+    uniqueID: 2975816495
     locked: 0

@@ -1,2 +1,2 @@
 # PA-TappyFish
-Panteon Akademi ile birlikte yaptığım 2D olan bir oyun..
+Panteon Akademi #2 Tappy Fish
